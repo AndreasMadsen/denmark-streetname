@@ -11,23 +11,15 @@ npm install denmark-streetname
 ## Documentation
 
 ```javascript
-streetname = require('denmark-streetname')
+Streetnames = require('denmark-streetname')
 ```
 
-This is a function with the signature `streetname(zipcode, callback)`:
+This is a function with the signature `Streetnames(zipcode)`,
+it will return an object stream where each item is a steetname.
 
 ```javascript
-streetname(2800, function (err, list) {
-  // Invalid zipcodes will produce an error.
-  list = [
-    'Vinagervej',
-    'Vintappersøen',
-    'Aldershvilevej',
-    'Amundsensvej',
-    'Bagsværd Møllevej',
-    'Bagsværdvej',
-    ...
-  ]
+Streetnames(2800).on('data', function (steetname) {
+  console.log(steetname); // e.q. Lyngby Hovedgade
 });
 ```
 
